@@ -19,14 +19,15 @@ public class Login {
 	             
 	}
 
-	@Given("User enter url as {string}")
-	public void enter_url(String url)
+	
+	
+	@Given("User enter url as")
+	public void user_enter_url_as() 
 	{
-		
-		Object[] input2 = new Object[1];
-        input2[0] = url;
-       SeleniumOperations.openApllication(input2);
+		SeleniumOperations.openApllication();	
+	
 	}
+
 
 	@When("user enter {string} as username")
 public void user_enter_as_username(String uname )

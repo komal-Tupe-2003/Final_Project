@@ -3,6 +3,6 @@ mapping\Login.class
 mapping\Search.class
 runner\RunTest.class
 mapping\Hookable.class
-utility\Access.class
+mapping\ConfigReader.class
 utility\Demo1.class
 utility\Demo.class

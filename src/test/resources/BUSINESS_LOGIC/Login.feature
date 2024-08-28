@@ -2,7 +2,7 @@ Feature: Login functionality
 
 Background: Application shows main page to user
 Given  User open "chrome" browser
-Given  User enter url as "http://primusbank.qedgetech.com/"
+Given  User enter url as 
 
 @SmokeTest
 Scenario: Login functionality with valid username and valid password

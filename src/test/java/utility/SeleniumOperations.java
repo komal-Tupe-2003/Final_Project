@@ -9,7 +9,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import mapping.ConfigReader;
+
 public class SeleniumOperations {
+	
+	public static ConfigReader config;
 	
 	public static WebDriver driver = null ;
     
@@ -21,28 +25,25 @@ public class SeleniumOperations {
 		String browsername = (String) inputParameters[0];
 		    if(browsername.equalsIgnoreCase(browsername))
 		    {
-		    	System.setProperty("webdriver.chrome.driver", "D:\\AUTOMATION SUPPORT\\chromedriver.exe");
+		    	config = new ConfigReader();
+		    	System.setProperty("webdriver.chrome.driver", config.getDriverPathChrome());
 		    	driver = new ChromeDriver();
 		    	driver.manage().window().maximize();
-		    	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		    	driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
 		    }
 		}catch(Exception e)
 		{
 			System.out.println(e);
 		}
-		
-		
-	}
+		}
 		
 	
-	public static void openApllication(Object[]inputparameters)
+	public static void openApllication()
 	{
 		try
 		{
-	  String url = (String) inputparameters[0];
-	  
-	  driver.navigate().to(url);
-	  driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	   driver.navigate().to(config.getApplicationUrl());
+	  driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
 		
 		}catch(Exception e)
 		{
@@ -59,7 +60,7 @@ public class SeleniumOperations {
 		String data = (String) inputParameters[1];
 		
 		driver.findElement(By.xpath(path)).sendKeys(data);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
 		}catch(Exception e)
 		{
 			System.out.println(e);
@@ -73,7 +74,7 @@ public class SeleniumOperations {
 		String xpath = (String)  inputParameters[0];
 		
 		driver.findElement(By.xpath(xpath)).click();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
 		}catch(Exception e)
 		{
 			System.out.println(e);
@@ -87,7 +88,7 @@ public class SeleniumOperations {
     	int place =   (Integer) inputParameters[1];
     	Select location = new Select(driver.findElement(By.xpath(path)));
 		location.selectByIndex(place);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
 		}catch(Exception e)
 		{
 			System.out.println(e);
